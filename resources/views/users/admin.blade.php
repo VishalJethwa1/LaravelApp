@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <!-- <h1>Admin</h1> -->
+    <!-- <h1 class="text-6xl">User Page</h1> -->
 
     @extends('template.main')
 
