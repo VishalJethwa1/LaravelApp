@@ -16,38 +16,41 @@
     <div class="container right-panel-active">
 	<!-- Sign Up -->
 	<div class="container__form container--signup">
-		<form action="" method="post" enctype="multipart/form-data" class="form" id="form1">
+		<form action="{{route('register-user')}}" method="post" enctype="multipart/form-data" class="form" id="form1">
             
         @csrf
             @if (Session::has('success'))
-            <div class="alert alert-success">
+            <div class="text-green-600">
                 {{Session::get('success')}}
             </div>
             @endif
             
             @if (Session::has('fail'))
-                <div class="alert alert-danger">
+                <div class="text-red-600">
                     {{Session::get('fail')}}
                 </div>
             @endif
 
 			<h2 class="form__title">Sign Up</h2>
 			<input type="text" name="name" placeholder="Fullname" class="input" />
-            <span class="text-danger">
+            <span class="text-red-600">
                 @error('name')
                     {{$message}}
                 @enderror
             </span>
 			<input type="email" name="email" placeholder="Email" class="input" />
-            <span class="text-danger">
+            <span class="text-red-600">
                 @error('email')
                  {{$message}}
                 @enderror
             </span>
 			<input type="password" name="password" placeholder="Password" class="input" />
+            <span class="text-red-600">
             @error('password')
                 {{$message}}
             @enderror
+            </span>
+            <br>
 			<button type="submit" class="btn">Sign Up</button>
 		</form>
 	</div>

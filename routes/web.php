@@ -18,7 +18,7 @@ Route::get('/user', [UserController::class, 'user']);
 Route::get('/admin', [UserController::class, 'admin']);
 Route::get('/app', [PagesController::class, 'app']);
 Route::get('/signup', [AuthenticController::class, 'registration'])->middleware('alreadyLoggedIn');
-Route::get('/login', [AuthenticController::class, 'login'])->middlware('alreadyLoggedIn');
+Route::get('/login', [AuthenticController::class, 'login'])->middleware('alreadyLoggedIn');
 Route::post('registration-user', [AuthenticController::class, 'registerUser'])->name('register-user');
 Route::post('/login-user', [AuthenticController::class, 'loginUser'])->name('login-user');
 Route::get('/logout', [AuthenticController::class, 'logout']);
