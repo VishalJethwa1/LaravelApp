@@ -13,34 +13,78 @@
         <h1 class="text-8xl text-center p-10">Welcome to My App</h1>
     </header>
 
-    <!-- <main>
-        <div class="container mx-auto bg-zinc-200 p-28 shadow-lg">
-            <div class="columns-2">
-
-            </div>
-        </div>
-    </main> -->
-
     <div class="container right-panel-active">
 	<!-- Sign Up -->
 	<div class="container__form container--signup">
-		<form action="#" class="form" id="form1">
+		<form action="" method="post" enctype="multipart/form-data" class="form" id="form1">
+            
+        @csrf
+            @if (Session::has('success'))
+            <div class="alert alert-success">
+                {{Session::get('success')}}
+            </div>
+            @endif
+            
+            @if (Session::has('fail'))
+                <div class="alert alert-danger">
+                    {{Session::get('fail')}}
+                </div>
+            @endif
+
 			<h2 class="form__title">Sign Up</h2>
-			<input type="text" placeholder="User" class="input" />
-			<input type="email" placeholder="Email" class="input" />
-			<input type="password" placeholder="Password" class="input" />
-			<button class="btn">Sign Up</button>
+			<input type="text" name="name" placeholder="Fullname" class="input" />
+            <span class="text-danger">
+                @error('name')
+                    {{$message}}
+                @enderror
+            </span>
+			<input type="email" name="email" placeholder="Email" class="input" />
+            <span class="text-danger">
+                @error('email')
+                 {{$message}}
+                @enderror
+            </span>
+			<input type="password" name="password" placeholder="Password" class="input" />
+            @error('password')
+                {{$message}}
+            @enderror
+			<button type="submit" class="btn">Sign Up</button>
 		</form>
 	</div>
 
 	<!-- Sign In -->
 	<div class="container__form container--signin">
-		<form action="#" class="form" id="form2">
+		<form action="" method="post" enctype="multipart/form-data" class="form" id="form2">
+            @csrf
+            
+            @if(Session::has('success'))
+                <div class="alert alert-success">
+                    {{Session::get('success')}}
+                </div>
+            @endif
+
+            @if(Session::has('fail'))
+                <div class="alert alert-danger">
+                    {{Session::get('fail')}}
+                </div>
+            @endif
+
 			<h2 class="form__title">Sign In</h2>
-			<input type="email" placeholder="Email" class="input" />
+			<input type="email" name="email" placeholder="Email" class="input" />
+            <span class="text-danger">
+                @error('email')
+                    {{$message}}
+                @enderror
+            </span>
+            
 			<input type="password" placeholder="Password" class="input" />
+            <span class="text-danger">
+                @error('password')
+                    {{$message}}
+                @enderror
+            </span>
 			<a href="#" class="link">Forgot your password?</a>
-			<button class="btn">Sign In</button>
+			<button type="submit" class="btn">Sign In</button>
 		</form>
 	</div>
 
