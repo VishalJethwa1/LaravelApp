@@ -12,14 +12,14 @@ class AuthenticController extends Controller
     //Registration
     public function registration()
     {
-        return view('index');
+        return view('auth.registration');
     }
 
     public function registerUser(Request $request)
     {
         $request->validate([
             'name'=>'required',
-            'email'=>'required|email:users',
+            'email'=>'required|email:reg_user',
             'password'=>'required|min:8|max:12'
         ]);
 
@@ -39,19 +39,19 @@ class AuthenticController extends Controller
     //Login
     public function login()
     {
-        return view('index');
+        return view('auth.login');
     }
 
     public function loginUser(Request $request)
     {
         $request->validate([
-            'email'=>'required|email:users',
+            'email'=>'required|email:reg_user',
             'password'=>'required|min:8|max:12'
         ]);
 
-        $user = User::where('email', '=', $request->email)->first();
+        $user = register::where('email', '=', $request->email)->first();
         if($user){
-            if(Hash::check($request->password, $user)){
+            if(Hash::check($request->password, $user->password)){
                 $request->session()->put('loginId', $user->id);
                 return redirect('dashboard');
             } else {
@@ -60,16 +60,15 @@ class AuthenticController extends Controller
         } else {
             return back()->with('fail', 'This email is not register');
         }
-
     }
+
         //Dashboard
     public function dashboard()
     {
         $data = array();
         if(Session::has('loginId')){
-            $data = User::where('id', '=', Session::get('loginId'))->first();
+            $data = register::where('id', '=', Session::get('loginId'))->first();
         }
-
         return view('dashboard', compact('data'));
     }
 
