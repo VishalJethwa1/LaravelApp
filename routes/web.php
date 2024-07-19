@@ -16,7 +16,7 @@ Route::get('/', function () {
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/user', [UserController::class, 'user']);
 Route::get('/admin', [UserController::class, 'admin']);
@@ -25,8 +25,14 @@ Route::get('/admin', [UserController::class, 'admin']);
 Route::get('/app', [PagesController::class, 'app']);
 
 
+//Route::get('/registration', [AuthenticController::class, 'registration'])->middleware('alreadyLoggedIn');
+
 Route::get('/registration', [AuthenticController::class, 'registration'])->middleware('alreadyLoggedIn');
+
+//Route::post('/registration-user', [AuthenticController::class, 'registerUser'])->name('register-user');
+
 Route::post('/registration-user', [AuthenticController::class, 'registerUser'])->name('register-user');
+
 Route::get('/login', [AuthenticController::class, 'login'])->middleware('alreadyLoggedIn');
 Route::post('/login-user', [AuthenticController::class, 'loginUser'])->name('login-user');
 Route::get('/dashboard',[AuthenticController::class, 'dashboard'])->middleware('isLoggedIn');

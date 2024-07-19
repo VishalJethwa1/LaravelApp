@@ -12,7 +12,8 @@ class AuthenticController extends Controller
     //Registration
     public function registration()
     {
-        return view('auth.registration');
+        //return view('auth.registration');
+        return view('index');
     }
 
     public function registerUser(Request $request)
@@ -39,7 +40,8 @@ class AuthenticController extends Controller
     //Login
     public function login()
     {
-        return view('auth.login');
+        //return view('auth.login');
+        return view('index');
     }
 
     public function loginUser(Request $request)

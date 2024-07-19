@@ -16,7 +16,7 @@
     <div class="container right-panel-active">
 	<!-- Sign Up -->
 	<div class="container__form container--signup">
-		<form action="{{route('register-user')}}" method="post" enctype="multipart/form-data" class="form" id="form1">
+		<form action="{{route('registeration-user')}}" method="post" enctype="multipart/form-data" class="form" id="form1">
             
         @csrf
             @if (Session::has('success'))
@@ -57,7 +57,7 @@
 
 	<!-- Sign In -->
 	<div class="container__form container--signin">
-		<form action="" method="post" enctype="multipart/form-data" class="form" id="form2">
+		<form action="{{route('login-user')}}" method="post" enctype="multipart/form-data" class="form" id="form2">
             @csrf
             
             @if(Session::has('success'))
