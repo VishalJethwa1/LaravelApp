@@ -14,6 +14,10 @@ Route::get('/', function () {
 
 //Route::get('/user', [UserController::class, 'index']);
 
+Route::get('/', function () {
+    return view('home');
+});
+
 Route::get('/user', [UserController::class, 'user']);
 Route::get('/admin', [UserController::class, 'admin']);
 

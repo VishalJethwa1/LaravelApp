@@ -8,22 +8,14 @@
 <body>
 
     @section('header')
-    <!-- <nav class="w-full p-3 shadow-lg">
-        <ul>
-            <li><a href="">home</a></li>
-            <li><a href="">about</a></li>
-            <li><a href="">contact us</a></li>
-            <li><a href="">pricing</a></li>
-        </ul>
-    </nav> -->
-
-    <div class="w-full flex flex-wrap p-3 flex-col items-end shadow-lg bg-stone-700 text-stone-300">
-     <div class="flex flex-wrap items-center text-base justify-center uppercase mr-20">
-       <a href="" class="mr-5">home</a>
-       <a href="" class="mr-5">products</a>
-       <a href="" class="mr-5">pricing</a>
-       <a href="" class="mr-5">about</a>
-       <a href="" class="mr-5">contact us</a>
+    <div class="w-full grid grid-cols-2 p-3 shadow-lg bg-stone-700 text-stone-300">
+        <a href="" class="ml-20"><img src="/images/book-icon.png" height="65px" width="65px" alt=""></a>
+     <div class="flex items-center place-content-end text-base uppercase mr-20">    
+       <a href="" class="mr-8">home</a>
+       <a href="" class="mr-8">products</a>
+       <a href="" class="mr-8">pricing</a>
+       <a href="" class="mr-8">about</a>
+       <a href="" class="mr-8">contact us</a>
      </div>
     </div>
     @show
