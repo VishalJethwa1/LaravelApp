@@ -10,21 +10,21 @@
     @section('header')
     <div class="w-full grid grid-cols-2 p-3 shadow-lg bg-stone-700 text-stone-300">
         <a href="{{route('home')}}" class="ml-20"><img src="/images/book-icon.png" height="65px" width="65px" alt=""></a>
-     <div class="flex items-center place-content-end text-base uppercase mr-20">    
-       <a href="" class="mr-8">home</a>
-       <a href="" class="mr-8">products</a>
-       <a href="" class="mr-8">pricing</a>
-       <a href="" class="mr-8">about</a>
-       <a href="" class="mr-8">contact us</a>
-       <a href="{{route('register-user')}}" class="mr-8">Sign up</a>
-       <!-- <a href="{{route('register-user')}}" class="mr-8">Sign in</a> -->
+     <div class="flex items-center place-content-end text-base uppercase text-sm mr-20">    
+       <a href="" class="mr-5">home</a>
+       <a href="" class="mr-5">products</a>
+       <a href="" class="mr-5">pricing</a>
+       <a href="" class="mr-5">about</a>
+       <a href="" class="mr-5">contact us</a>
+       <a href="registration" class="mr-5">Sign up</a>
+       <a href="login" class="mr-5">Sign in</a>
      </div>
     </div>
     @show
 
     @section('content')
     <div class="container mx-auto p-5 bg-stone-100 h-screen ">
-        
+
     </div>
     @show
 
