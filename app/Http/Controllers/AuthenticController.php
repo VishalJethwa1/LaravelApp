@@ -40,8 +40,8 @@ class AuthenticController extends Controller
     //Login
     public function login()
     {
-        //return view('auth.login');
-        return view('index');
+        return view('auth.login');
+        //return view('index');
     }
 
     public function loginUser(Request $request)

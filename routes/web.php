@@ -1,33 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\AuthenticController;
-use App\Http\Middleware\AlreadyLoggedIn;
-use App\Http\Middleware\AuthCheck;
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-//Route::get('/user', [UserController::class, 'index']);
 
 Route::get('/', function () {
-    return view('home');
-})->name('home');
+    return view('welcome');
+});
 
-Route::get('/user', [UserController::class, 'user']);
-Route::get('/admin', [UserController::class, 'admin']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-Route::get('/app', [PagesController::class, 'app']);
-
-
-Route::get('/registration', [AuthenticController::class, 'registration'])->middleware('alreadyLoggedIn');
-Route::post('/registration-user', [AuthenticController::class, 'registerUser'])->name('register-user');
-Route::get('/login', [AuthenticController::class, 'login'])->middleware('alreadyLoggedIn');
-Route::post('/login-user', [AuthenticController::class, 'loginUser'])->name('login-user');
-Route::get('/dashboard',[AuthenticController::class, 'dashboard'])->middleware('isLoggedIn');
-Route::get('/logout', [AuthenticController::class, 'logout']);
+require __DIR__.'/auth.php';

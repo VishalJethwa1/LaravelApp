@@ -9,9 +9,6 @@
     @vite(['resources/js/app.js'])
 </head>
 <body>
-    <header>
-        <h1 class="text-8xl text-center p-10">Welcome to My App</h1>
-    </header>
 
     <div class="container right-panel-active">
 	<!-- Sign Up -->
